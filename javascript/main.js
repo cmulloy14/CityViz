@@ -35,18 +35,18 @@ app.controller('firstCtrl', function($scope, $http) {
     var costOfLivingBar2Data = [{category: "costOfLiving", value: 1.7, widthDivision: COST_OF_LIVING_WIDTH}];
 
 
-    var pictures = 
+    var pictures =
     [
-        {section: "income", id: "moneyPic", url: "money.jpg"},
-        {section: "population", id: "popPic", url: "popDens.jpg"},
-        {section: "economy", id: "economyPic", url: "economy.jpg"}
+        {section: "income", id: "moneyPic", url: "images/money.jpg"},
+        {section: "population", id: "popPic", url: "images/popDens.jpg"},
+        {section: "economy", id: "economyPic", url: "images/economy.jpg"}
     ];
 
     $scope.displayBars = function()
     {
              $scope.showButt = false;
             $scope.show = true;
-    
+
             var city1 = [
              { name:"St. Louis",  income:34384, pcIncome: 22551, lifeExp: 71.3, pop:317419, popDensity: 5127}
             ];
@@ -60,7 +60,7 @@ app.controller('firstCtrl', function($scope, $http) {
 
             addBar("#incomeBar1", incomeBar1Data, "income")
             addBar("#incomeBar2", incomeBar2Data, "income")
-            
+
             addBar("#pcIncomeBar1", pcIncomeBar1Data, "income")
             addBar("#pcIncomeBar2", pcIncomeBar2Data, "income")
 
@@ -72,12 +72,12 @@ app.controller('firstCtrl', function($scope, $http) {
 
             addBar("#popDensityBar1", popDensBar1Data, "population")
             addBar("#popDensityBar2", popDensBar2Data, "population")
- 
+
             addBar("#costOfLivingBar1", costOfLivingBar1Data,"economy")
             addBar("#costOfLivingBar2", costOfLivingBar2Data,"economy")
 
 
-            
+
             animateBars();
 
 
@@ -88,7 +88,7 @@ app.controller('firstCtrl', function($scope, $http) {
     {
            fadeOutMainContent()
            updateHeader($event.currentTarget.id)
-            
+
     }
 
 
@@ -105,7 +105,7 @@ app.controller('firstCtrl', function($scope, $http) {
             jQuery(".secondContent").animate({
                      opacity: 1,
                 }, 1000, function() {
-                
+
                 });
 
             });
@@ -162,7 +162,7 @@ app.controller('firstCtrl', function($scope, $http) {
     {
         var i;
 
-        //setting picture 
+        //setting picture
         for (i = 0; i < pictures.length; i++)
         {
             if(pictures[i].section == section)
@@ -170,7 +170,7 @@ app.controller('firstCtrl', function($scope, $http) {
                 break;
             }
         }
-        
+
         bars.push(new Bar(id, data, pictures[i].url, pictures[i].id));
 
     }
@@ -202,7 +202,3 @@ app.config(function($routeProvider) {
         templateUrl : "test.html"
      });
     });
-
-
-
-
