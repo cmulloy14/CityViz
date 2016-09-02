@@ -5,16 +5,16 @@
     <title>City Compare Viz</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href= 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    
+
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"> </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    
+
     <script src = "javascript/Bar.js"></script>
     <script src = "javascript/main.js"> </script>
 
@@ -56,7 +56,7 @@
       .secondContent{
         opacity: 0;
       }
-      
+
     </style>
 
   <body ng-app = "homePage">
@@ -66,16 +66,16 @@
       <h2> {{mainHeader}}</h2>
     <br >
 
-    
+
 
     <section class="main-content" ng-show = "show" >
-      
+      <strong> * If no data shown, please update your browser * </strong>
 
-        <!-- City Label Row --> 
+        <!-- City Label Row -->
        <div class="row">
-          
+
           <div class="col-md-1"></div>
-          
+
           <div style = "text-align: center;" class="col-md-4 topCityLabel mainContent">
 
               {{city1Name}}
@@ -99,9 +99,9 @@
 
         <!-- Median Household Income Row -->
         <div class="row">
-          
+
           <div id = "incomeSectionLabel" class="col-md-1 dataLabel  mainContent"> Income </div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="incomeBar1"></div>
@@ -124,9 +124,9 @@
 
         <!-- Per Capita Income Row -->
         <div class="row">
-          
+
           <div class="col-md-1 dataLabel"> </div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="pcIncomeBar1"></div>
@@ -146,13 +146,13 @@
         </div>
 
  <br />
-       
-      
+
+
       <!-- Poverty Line Row -->
         <div class="row">
-          
+
           <div class="col-md-1 dataLabel"> </div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="povLineBar1"></div>
@@ -176,9 +176,9 @@
       <!-- Population Row -->
 
         <div class="row">
-          
+
           <div id = "populationSectionLabel" class="col-md-1 dataLabel  mainContent"> Population </div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="populationBar1"></div>
@@ -201,9 +201,9 @@
 
         <!-- Population Density Row -->
         <div class="row">
-          
+
           <div class="col-md-1"></div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="popDensityBar1"></div>
@@ -227,9 +227,9 @@
 
         <!-- Cost of Living Row -->
         <div class="row">
-          
+
           <div id = "economySectionLabel" class="col-md-1 dataLabel  mainContent"> Economy </div>
-          
+
           <div style = "text-align: right;" class="col-md-4">
 
               <div class = "mainContent" ng-click = "barClick(self, $event)" id="costOfLivingBar1"></div>
@@ -262,7 +262,7 @@
     <!-- end of first controller -->
 
       <footer class="site-footer">
-     
+
 
 
 
