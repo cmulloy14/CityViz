@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>City Compare Viz</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href= 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <script src = "javascript/Bar.js"></script>
+    <script src = "javascript/main.js"> </script>
+
+  </head>
+    <style type="text/css">
+      svg {background: #DDD;}
+
+      body {background-image: url("https://newevolutiondesigns.com/images/freebies/city-wallpaper-11.jpg")}
+
+      .dataLabel {
+        font-size: 16px;
+        color: black;}
+
+      .topCityLabel {
+        font-size: 24px;
+        color: black;
+        }
+
+      #incomeSectionLabel{
+
+          padding-left: 50px;
+          top: 50px;
+          font-size: 24px;
+      }
+      #populationSectionLabel{
+
+          padding-left: 50px;
+          top: 50px;
+          font-size: 24px;
+
+      }
+      #economySectionLabel{
+
+          padding-left: 50px;
+          top: 50px;
+          font-size: 24px;
+
+      }
+      .secondContent{
+        opacity: 0;
+      }
+
+    </style>
+
+  <body ng-app = "homePage">
+
+  <div ng-controller = "firstCtrl">
+
+      <h2> {{mainHeader}}</h2>
+    <br >
+
+
+
+    <section class="main-content" ng-show = "show" >
+      <strong> * If no data shown, please update your browser * </strong>
+
+        <!-- City Label Row -->
+       <div class="row">
+
+          <div class="col-md-1"></div>
+
+          <div style = "text-align: center;" class="col-md-4 topCityLabel mainContent">
+
+              {{city1Name}}
+
+          </div>
+
+          <div class="col-md-2"  style = "text-align: center;"> </div>
+
+          <div class="col-md-4 topCityLabel mainContent" style = "text-align: center;" >
+
+               {{city2Name}}
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+        <br />
+
+
+        <!-- Median Household Income Row -->
+        <div class="row">
+
+          <div id = "incomeSectionLabel" class="col-md-1 dataLabel  mainContent"> Income </div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="incomeBar1"></div>
+
+          </div>
+
+          <div class="col-md-2 dataLabel mainContent" style = "text-align: center;"> Median Household Income </div>
+
+          <div class="col-md-4">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="incomeBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+        <br />
+
+        <!-- Per Capita Income Row -->
+        <div class="row">
+
+          <div class="col-md-1 dataLabel"> </div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="pcIncomeBar1"></div>
+
+          </div>
+
+          <div class="col-md-2 dataLabel  mainContent" style = "text-align: center;" > Per Capita Income </div>
+
+          <div class="col-md-4">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="pcIncomeBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+ <br />
+
+
+      <!-- Poverty Line Row -->
+        <div class="row">
+
+          <div class="col-md-1 dataLabel"> </div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="povLineBar1"></div>
+
+          </div>
+
+          <div class="col-md-2 dataLabel  mainContent" style = "text-align: center;" > Population Above Poverty Line </div>
+
+          <div class="col-md-4">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="povLineBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+       <hr class = "mainContent" />
+
+      <!-- Population Row -->
+
+        <div class="row">
+
+          <div id = "populationSectionLabel" class="col-md-1 dataLabel  mainContent"> Population </div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="populationBar1"></div>
+
+          </div>
+
+            <div class="col-md-2 dataLabel  mainContent" style = "text-align: center;"> City Population</div>
+
+          <div class="col-md-4 ">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="populationBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+        <br />
+
+        <!-- Population Density Row -->
+        <div class="row">
+
+          <div class="col-md-1"></div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="popDensityBar1"></div>
+
+          </div>
+
+            <div class="col-md-2 dataLabel mainContent" style = "text-align: center;"> Population Density <br >(people/mi <sup>2</sup> )</div>
+
+          <div class="col-md-4 ">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="popDensityBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+
+        <hr class = "mainContent" />
+
+        <!-- Cost of Living Row -->
+        <div class="row">
+
+          <div id = "economySectionLabel" class="col-md-1 dataLabel  mainContent"> Economy </div>
+
+          <div style = "text-align: right;" class="col-md-4">
+
+              <div class = "mainContent" ng-click = "barClick(self, $event)" id="costOfLivingBar1"></div>
+
+          </div>
+
+            <div class="col-md-2 dataLabel mainContent" style = "text-align: center;"> Cost of Living Index <br> (x national average) </div>
+
+          <div class="col-md-4 ">
+
+               <div class = "mainContent" ng-click = "barClick(self, $event)" style = "text-align: left;" id="costOfLivingBar2"></div>
+
+          </div>
+
+          <div class="col-md-1"></div>
+
+        </div>
+
+    </section>
+
+    <section class = "secondContent" >
+      <a href = "#second"> Second Stuff</a>
+       <div ng-view> </div>
+    </section>
+
+<br> <br><br> <br>
+ <button ng-show = "showButt" ng-click = "displayBars()"> Generate Graph </button>
+    </div>
+
+    <!-- end of first controller -->
+
+      <footer class="site-footer">
+
+
+
+
+  </body>
+</html>
