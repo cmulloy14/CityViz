@@ -2,7 +2,7 @@ var app = angular.module('homePage', ["ngRoute"]);
 app.controller('firstCtrl', function($scope, $http) {
 
 
-    $scope.mainHeader = "City Comparison Visualization";
+    $scope.mainHeader = "City Visualization";
 
     $scope.showStats = false;
     $scope.show = false;
